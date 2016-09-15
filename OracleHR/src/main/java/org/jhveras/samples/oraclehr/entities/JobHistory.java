@@ -1,13 +1,15 @@
 package org.jhveras.samples.oraclehr.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity(name = "JOB_HISTORY")
+@IdClass(JobHistoryId.class)
 public class JobHistory {
 
 	@Id

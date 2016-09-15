@@ -1,8 +1,9 @@
 package org.jhveras.samples.oraclehr.entities;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,6 +15,7 @@ import javax.persistence.TemporalType;
 public class Employee {
 	
 	@Id
+	@Column(name = "EMPLOYEE_ID")
 	private long employeeId;
 	
 	private String firstName;
