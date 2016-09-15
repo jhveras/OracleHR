@@ -1,6 +1,8 @@
 package org.jhveras.samples.oraclehr;
 
+import org.jhveras.samples.oraclehr.entities.Employee;
 import org.jhveras.samples.oraclehr.entities.Region;
+import org.jhveras.samples.oraclehr.entities.repositories.EmployeeRepository;
 import org.jhveras.samples.oraclehr.entities.repositories.RegionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,10 +21,10 @@ public class Application {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(RegionRepository repository) {
+	public CommandLineRunner demo(EmployeeRepository repository) {
 		return (args) -> {
 
-			for (Region region : repository.findAll()) {
+			for (Employee region : repository.findAll()) {
 				log.info(region.toString());
 			}
 		};

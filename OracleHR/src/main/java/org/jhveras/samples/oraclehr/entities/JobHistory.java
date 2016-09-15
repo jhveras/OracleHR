@@ -3,21 +3,23 @@ package org.jhveras.samples.oraclehr.entities;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity(name = "JOB_HISTORY")
 public class JobHistory {
 
-	
+	@Id
 	private Employee employee;
+	
+	@Id
+	@Temporal(TemporalType.DATE)
+	private Date startDate;	
 	
 	private Job job;
 	
 	private Department department;
-	
-	@Temporal(TemporalType.DATE)
-	private Date startDate;
 	
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
