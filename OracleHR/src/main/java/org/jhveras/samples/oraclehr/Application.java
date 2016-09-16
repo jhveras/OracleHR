@@ -25,10 +25,10 @@ public class Application {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(DepartmentRepository repository) {
+	public CommandLineRunner demo(EmployeeRepository repository) {
 		return (args) -> {
 
-			for (Department entity : repository.findAll()) {
+			for (Employee entity : repository.findAll()) {
 				log.info(entity.toString());
 			}
 		};
