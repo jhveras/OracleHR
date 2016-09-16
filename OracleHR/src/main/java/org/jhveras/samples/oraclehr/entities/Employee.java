@@ -29,14 +29,16 @@ public class Employee {
 	@Temporal(TemporalType.DATE)
 	private Date hireDate;
 	
-	private long jobId;
+	@ManyToOne
+	@JoinColumn(name = "JOB_ID")
+	private Job job;
 	
 	private BigDecimal salary;
 	
 	private BigDecimal commissionPct;
 	
 	@ManyToOne
-	@JoinColumn(name = "MANAGER_ID", referencedColumnName = "EMPLOYEE_ID")
+	@JoinColumn(name = "MANAGER_ID")
 	private Employee manager;
 	
 	@ManyToOne
@@ -91,12 +93,12 @@ public class Employee {
 		this.hireDate = hireDate;
 	}
 
-	public long getJobId() {
-		return jobId;
+	public Job getJob() {
+		return job;
 	}
 
-	public void setJobId(long jobId) {
-		this.jobId = jobId;
+	public void setJob(Job jobId) {
+		this.job = jobId;
 	}
 
 	public BigDecimal getSalary() {
@@ -115,19 +117,19 @@ public class Employee {
 		this.commissionPct = commissionPct;
 	}
 
-	public Employee getManagerId() {
+	public Employee getManager() {
 		return manager;
 	}
 
-	public void setManagerId(Employee managerId) {
+	public void setManager(Employee managerId) {
 		this.manager = managerId;
 	}
 
-	public Department getDepartmentId() {
+	public Department getDepartment() {
 		return department;
 	}
 
-	public void setDepartmentId(Department departmentId) {
+	public void setDepartment(Department departmentId) {
 		this.department = departmentId;
 	}
 

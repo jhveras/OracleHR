@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity(name = "DEPARTMENTS")
 public class Department {
@@ -13,7 +14,9 @@ public class Department {
 	
 	private String departmentName;
 	
-	private Employee managerId;
+	@ManyToOne
+	@JoinColumn(name = "MANAGER_ID")
+	private Employee manager;
 	
 	@ManyToOne
 	@JoinColumn(name = "LOCATION_ID")
@@ -39,12 +42,12 @@ public class Department {
 		this.departmentName = departmentName;
 	}
 
-	public Employee getManagerId() {
-		return managerId;
+	public Employee getManager() {
+		return manager;
 	}
 
-	public void setManagerId(Employee managerId) {
-		this.managerId = managerId;
+	public void setManager(Employee managerId) {
+		this.manager = managerId;
 	}
 
 	public Location getLocationId() {

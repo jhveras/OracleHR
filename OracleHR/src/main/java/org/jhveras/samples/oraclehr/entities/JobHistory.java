@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -13,25 +15,29 @@ import javax.persistence.TemporalType;
 public class JobHistory {
 
 	@Id
-	private Employee employee;
+	private long employeeId;
 	
 	@Id
 	@Temporal(TemporalType.DATE)
 	private Date startDate;	
 	
+	@ManyToOne
+	@JoinColumn(name = "JOB_ID")
 	private Job job;
 	
+	@ManyToOne
+	@JoinColumn(name = "DEPARTMENT_ID")
 	private Department department;
 	
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
 
-	public Employee getEmployee() {
-		return employee;
+	public long getEmployee() {
+		return employeeId;
 	}
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setEmployee(long employee) {
+		this.employeeId = employee;
 	}
 
 	public Job getJob() {

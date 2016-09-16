@@ -10,20 +10,20 @@ public class JobHistoryId implements Serializable {
 	 */
 	private static final long serialVersionUID = 9197199431099179912L;
 	
-	private Employee employee;	
+	private long employeeId;	
 	private Date startDate;
 
 	public JobHistoryId() {
 		
 	}
 	
-	public JobHistoryId(Employee employee, Date startDate) {
-		this.employee = employee;
+	public JobHistoryId(long employee, Date startDate) {
+		this.employeeId = employee;
 		this.startDate = startDate;
 	}
 
-	public Employee getEmployee() {
-		return employee;
+	public long getEmployee() {
+		return employeeId;
 	}
 	
 	public Date getStartDate() {
@@ -37,11 +37,11 @@ public class JobHistoryId implements Serializable {
 	public boolean equals(Object o) {
 		return ((o instanceof JobHistoryId) 
 				&& startDate.equals(((JobHistoryId)o).getStartDate()) 
-				&& (employee == ((JobHistoryId)o).getEmployee()));		
+				&& (employeeId == ((JobHistoryId)o).getEmployee()));		
 	}
 	
 	public int hashCode() {
-		return employee.hashCode() + startDate.hashCode();
+		return new Long(employeeId).hashCode() + startDate.hashCode();
 	}
 
 }
