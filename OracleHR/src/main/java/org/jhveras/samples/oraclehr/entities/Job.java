@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "JOBS")
 public class Job {
 
 	@Id
