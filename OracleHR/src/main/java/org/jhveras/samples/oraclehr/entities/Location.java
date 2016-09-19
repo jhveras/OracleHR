@@ -1,14 +1,23 @@
 package org.jhveras.samples.oraclehr.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity(name = "LOCATIONS")
 public class Location {
 
 	@Id
+	@SequenceGenerator(
+	        name="LOCATION_SEQUENCE_GENERATOR",
+	        sequenceName="LOCATIONS_SEQ",
+	        allocationSize = 1
+	    )
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="LOCATION_SEQUENCE_GENERATOR")
 	private long locationId;
 	
 	private String streetAddress;
@@ -63,11 +72,11 @@ public class Location {
 		this.stateProvince = stateProvince;
 	}
 
-	public Country getCountryId() {
+	public Country getCountry() {
 		return country;
 	}
 
-	public void setCountryId(Country countryId) {
+	public void setCountry(Country countryId) {
 		this.country = countryId;
 	}
 }

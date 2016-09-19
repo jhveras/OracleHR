@@ -15,7 +15,7 @@ public class Country {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "REGION_ID", referencedColumnName = "REGION_ID")
-	private Region regionId;
+	private Region region;
 
 	public Country() {
 
@@ -37,12 +37,12 @@ public class Country {
 		this.countryName = countryName;
 	}
 
-	public Region getRegionId() {
-		return regionId;
+	public Region getRegion() {
+		return region;
 	}
 
-	public void setRegionId(Region region) {
-		this.regionId = region;
+	public void setRegion(Region region) {
+		this.region = region;
 	}
 
 }

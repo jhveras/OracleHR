@@ -1,26 +1,37 @@
 package org.jhveras.samples.oraclehr.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity(name = "DEPARTMENTS")
 public class Department {
-
+	
 	@Id
+	@SequenceGenerator(
+	        name="DEPARTMENT_SEQUENCE_GENERATOR",
+	        sequenceName="DEPARTMENTS_SEQ",
+	        allocationSize = 1
+	    )
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="DEPARTMENT_SEQUENCE_GENERATOR")
 	private long departmentId;
 	
 	private String departmentName;
 	
 	@ManyToOne
 	@JoinColumn(name = "MANAGER_ID")
+	@JsonManagedReference
 	private Employee manager;
 	
 	@ManyToOne
 	@JoinColumn(name = "LOCATION_ID")
-	private Location locationId;
+	private Location location;
 	
 	public Department() {
 		
@@ -50,11 +61,15 @@ public class Department {
 		this.manager = managerId;
 	}
 
-	public Location getLocationId() {
-		return locationId;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setLocationId(Location locationId) {
-		this.locationId = locationId;
+	public void setLocation(Location locationId) {
+		this.location = locationId;
+	}
+	
+	public String toString() {
+		return getDepartmentId() + " " + getDepartmentName() + " " + getManager() + " " + getLocation(); 
 	}
 }
