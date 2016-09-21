@@ -21,6 +21,9 @@ public class DepartmentController {
 	@Autowired
 	DepartmentRepository departmentRepository;
 	
+	/*
+	 * 
+	 */
 	@RequestMapping(value = "/departments", method = RequestMethod.GET)
 	public ResponseEntity<List<Department>> listAllDepartments() {
 		List<Department> departments = departmentRepository.findAll();
@@ -28,11 +31,13 @@ public class DepartmentController {
 		if (departments.isEmpty()) {
 			return new ResponseEntity<List<Department>>(HttpStatus.NOT_FOUND);
 		}
-		
-		
+				
 		return new ResponseEntity<List<Department>>(departments, HttpStatus.OK);
 	}
 	
+	/*
+	 * 
+	 */
 	@RequestMapping(value = "/departments/{departmentId}", method = RequestMethod.GET)
 	public ResponseEntity<Department> getDepartment(@PathVariable("departmentId") Long departmentId) {
 		Department department = departmentRepository.findOne(departmentId);
@@ -45,6 +50,9 @@ public class DepartmentController {
 		return new ResponseEntity<Department>(department, HttpStatus.OK);
 	}
 	
+	/*
+	 * 
+	 */
 	@RequestMapping(value = "/departments", method = RequestMethod.POST)
 	public ResponseEntity<Department> createDepartment(@RequestBody Department department, UriComponentsBuilder ucb) {
 		Department newDepartment = departmentRepository.findByDepartmentName(department.getDepartmentName());
@@ -64,8 +72,12 @@ public class DepartmentController {
 		return new ResponseEntity<Department>(newDepartment, headers, HttpStatus.CREATED);
 	}
 	
-	public ResponseEntity<Department> updateDepartment(@RequestBody Department department) {
-		Department updateDepartment = departmentRepository.findOne(department.getDepartmentId());
+	/*
+	 * 
+	 */
+	@RequestMapping(value = "/departments/{departmentId}", method = RequestMethod.PUT)
+	public ResponseEntity<Department> updateDepartment(@PathVariable("departmentId") Long departmentId, @RequestBody Department department) {
+		Department updateDepartment = departmentRepository.findOne(departmentId);
 		
 		if (updateDepartment == null) {
 			return new ResponseEntity<Department>(department, HttpStatus.NOT_FOUND);
