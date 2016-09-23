@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity(name = "DEPARTMENTS")
@@ -26,7 +27,7 @@ public class Department {
 	
 	@ManyToOne
 	@JoinColumn(name = "MANAGER_ID")
-	@JsonManagedReference
+	@JsonBackReference
 	private Employee manager;
 	
 	@ManyToOne

@@ -15,6 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity(name = "EMPLOYEES")
 public class Employee {
@@ -54,7 +55,7 @@ public class Employee {
 	
 	@ManyToOne
 	@JoinColumn(name = "DEPARTMENT_ID")
-	@JsonBackReference
+	@JsonManagedReference
 	private Department department;
 
 	public long getEmployeeId() {
